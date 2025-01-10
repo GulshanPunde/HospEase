@@ -1,6 +1,6 @@
 // src/components/SettingsPage.js
 import React, { useState } from "react";
-import Swal from "sweetalert2";
+import Swal from "sweetalert";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const SettingsPage = () => {

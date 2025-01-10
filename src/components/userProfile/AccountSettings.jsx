@@ -1,6 +1,6 @@
 // AccountSettings.js
 import React, { useState } from 'react';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert';
 import ChangePasswordModal from './ChangePasswordModal';
 import NotificationSettingsModal from './NotificationSettingsModal';
 

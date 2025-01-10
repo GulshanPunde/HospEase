@@ -1,6 +1,6 @@
 // OrderHistory.js
 import React, { useState } from 'react';
-import Swal from 'sweetalert2'; // Import SweetAlert2
+import Swal from 'sweetalert'; // Import SweetAlert2
 
 const OrderHistory = () => {
   const [filter, setFilter] = useState('all');
