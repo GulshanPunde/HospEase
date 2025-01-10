@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Swal from "sweetalert";
+import Swal from "sweetalert"; // Import SweetAlert (not SweetAlert2)
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ContactForm = () => {
@@ -35,13 +35,13 @@ const ContactForm = () => {
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
       // Show SweetAlert success message
-      Swal.fire({
-        icon: "success",
+      Swal({
         title: "Message Sent",
         text: "Thank you for contacting us. We'll get back to you soon!",
-        background: "#343a40",
-        color: "#ffffff",
-        confirmButtonColor: "#007bff",
+        icon: "success",
+        button: "OK",
+        // Custom styles for SweetAlert in dark mode
+        className: "sweetalert-dark",
       });
       setFormSubmitted(true);
       setFormData({
@@ -62,14 +62,16 @@ const ContactForm = () => {
           ::placeholder {
             color: white !important;
           }
+          .sweetalert-dark .swal-modal {
+            background-color: #343a40 !important;
+            color: white;
+          }
         `}
       </style>
       <div style={{ maxWidth: "600px", margin: "0 auto" }}>
-        <h2>Contact Us</h2>
+        <h2 className="text-light">Contact Us</h2>
         {formSubmitted && (
-          <div className="alert alert-success">
-            Form submitted successfully!
-          </div>
+          <div className="alert alert-success">Form submitted successfully!</div>
         )}
         <form onSubmit={handleSubmit} noValidate>
           <div className="form-group">
@@ -118,9 +120,7 @@ const ContactForm = () => {
           </div>
           <div className="form-group">
             <textarea
-              className={`form-control ${
-                formErrors.message ? "is-invalid" : ""
-              }`}
+              className={`form-control ${formErrors.message ? "is-invalid" : ""}`}
               id="message"
               name="message"
               rows="4"

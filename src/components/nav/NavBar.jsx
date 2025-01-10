@@ -21,7 +21,7 @@ function NavBar({ title, isLoggedIn }) {
               id="name"
               className="navbar-brand fw-bold pointer"
             >
-             <strong>{title}</strong> 
+             <strong> <i className="bi bi-heart-pulse me-1 text-primary"></i>{title}</strong> 
             </span>
 
             {/* Toggler Button for Collapsible Navbar */}
@@ -70,7 +70,7 @@ function NavBar({ title, isLoggedIn }) {
               onClick={() => handleNavigation("/")}
               id="name"
               className="navbar-brand fw-bold pointer"
-            ><strong > {title}</strong>
+            ><strong >  <i className="bi bi-heart-pulse me-1 text-primary"></i>{title}</strong>
               
             </span>
 

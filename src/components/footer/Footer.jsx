@@ -7,10 +7,17 @@ import Links from "./Links";
 import ProductList from "./ProductList";
 
 function Footer({ title }) {
+  const footerStyles = {
+    backgroundColor: "rgba(0, 0, 0, 0.7)", // Adjust the alpha (last value) for transparency
+  };
+
   return (
     <div>
       <hr />
-      <footer className="text-center text-lg-start bg-dark text-light">
+      <footer
+        className="text-center text-lg-start text-light p-1"
+        style={footerStyles}
+      >
         <div className="container text-center text-md-start mt-5">
           <div className="row mt-3">
             <AboutCompany title={title} />
@@ -19,9 +26,10 @@ function Footer({ title }) {
             <Contact />
           </div>
         </div>
+       
       </footer>
       <Social />
-      <CopyRight />
+        <CopyRight />
     </div>
   );
 }

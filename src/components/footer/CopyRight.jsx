@@ -1,14 +1,19 @@
 import React from "react";
 
 function CopyRight() {
+  const styles = {
+    
+    link: {
+      color: "white",
+      textDecoration: "none",
+    },
+  };
+
   return (
-    <div
-      className="text-center p-3"
-      style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-    >
-      © 2024 Copyright:
-      <a className="text-light" href="#/">
-        GPtextile.com
+    <div style={styles.container} className="p-2 text-center bg-dark text-danger">
+      © {new Date().getFullYear()} Copyright:{" "}
+      <a style={styles.link} href="#/">
+      GMedicap.com
       </a>
     </div>
   );

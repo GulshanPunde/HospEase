@@ -16,9 +16,9 @@ function App() {
   // const isLoggedIn = true; 
   const isLoggedIn = false; 
   return (
-    <>
+    <div className="background-image">
      <NavBar title={title} isLoggedIn={isLoggedIn}/>
-    <Routes>
+    <Routes >
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/SignUp" element={<SignUp />} />
@@ -27,7 +27,7 @@ function App() {
       <Route path="/about-us" element={<AboutUsPage/>} />
     </Routes>
     <Footer title={title} />
-    </>
+    </div>
   )
 }
 export default App
