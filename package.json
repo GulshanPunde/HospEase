@@ -20,10 +20,8 @@
     "react-dom": "^18.3.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.1",
-    "react-sweetalert2": "^0.5.2",
     "string-similarity-js": "^2.1.4",
     "sweetalert": "^2.1.2",
-    "sweetalert2": "^11.15.10",
     "uuid": "^11.0.4"
   },
   "devDependencies": {

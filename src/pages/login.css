@@ -1,0 +1,27 @@
+#form-control {
+  background-color: transparent !important; /* Transparent background for form controls */
+  color: #ffffff !important; /* White text for form controls */
+}
+
+#form-control::placeholder {
+  color: #aaa !important; /* Light gray placeholder text */
+}
+
+a.small {
+  color: #aaa !important; /* Light white color for "Forgot password?" and "Terms of use/Privacy policy" */
+  text-decoration: none;
+}
+
+#loginbutton {
+  width: 100%;
+  background-color: #373636;
+  border: none;
+  border-radius: 5px;
+  color: #cbc4c4; /* Lighter text for the button */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Add shadow to the button */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+#loginbutton:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}

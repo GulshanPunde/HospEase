@@ -10,76 +10,33 @@
   cursor: pointer;
 }
 
-.dropdown button {
-  width: 100px;
-  opacity: 0.8;
-}
+/* background image css */
 
-.dropdown button::after {
-  display: none;
+.background-image {
+  position: relative;
+  background-image: url('../public/images/background/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  min-height: 100vh; 
+  padding-top: 20px; 
 }
+ /* Ensures the background covers the entire viewport */
+  /* Adjust this value based on your navbar height */
 
-/* OverLay */
-#overlay {
-  padding: 100px;
-  padding-top: 200px;
-  background-color: black;
-  opacity: 0.5;
-  position: fixed;
+.background-image::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  text-align: center;
-  z-index: 10000;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, ); 
+  /* Adjust opacity (0.0 - 1.0) */
+  z-index: -1; 
+  /* Ensures the overlay stays behind the content */
+  
 }
 
-#overlay .spinner-border {
-  min-width: 10vw;
-  min-height: 10vw;
-  font-size: 30px;
-}
-
-/* Single */
-
-#single {
-  max-width: 1000px;
-  min-height: 500px;
-}
-
-#single img {
-  max-height: 500px;
-  object-fit: contain;
-}
-
-#single button {
-  width: 180px;
-}
-
-/* Line */
-
-.line {
-  opacity: 0.7;
-  height: 5px !important;
-}
-
-/* Product */
-
-#product img {
-  padding: 10px 5px 0;
-  height: 140px;
-  object-fit: contain;
-}
-
-/* Cart */
-#cart .description {
-  max-height: 50px;
-  overflow: hidden;
-}
-
-/* Cart Numbers */
-#cart-numbers li:last-child span:last-child {
-  font-weight: bolder;
-}
-/* Styling for Login button */
 
