@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 function Theme() {
   const navigate = useNavigate();
-
-  const categories = ["About Us", "Contact Us", "Help"];
+  const categories = ["Departments","Doctors","About Us", "Contact Us", "Help"];
 
   const handleNavigation = (category) => {
     switch (category) {
+      case "Departments":
+        navigate("/departments");
+        break;
       case "About Us":
         navigate("/about-us");
         break;
@@ -17,6 +19,9 @@ function Theme() {
       case "Help":
         navigate("/help");
         break;
+        case "Doctors":
+          navigate("/department-doctors");
+          break;
       default:
         break;
     }

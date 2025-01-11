@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/nav/NavBar";
-// import './App.css'
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -9,7 +8,8 @@ import ContactPage from "./pages/ContactPage";
 import Help from "./pages/Help";
 import AboutUsPage from "./pages/AboutUsPage";
 import Footer from "./components/footer/Footer";
-
+import DepartmentDoctors from "./pages/DepartmentDoctors";
+import AboutDepartment from "./components/infoCarts/AboutDepartment";
 
 function App() {
   const title = "HospEase";
@@ -25,6 +25,8 @@ function App() {
       <Route path="/help" element={<Help />} />
       <Route path="/contact-us" element={<ContactPage />} />
       <Route path="/about-us" element={<AboutUsPage/>} />
+      <Route path="/department-doctors" element={<DepartmentDoctors/>}/>
+      <Route path="/departments" element={<AboutDepartment/>} />
     </Routes>
     <Footer title={title} />
     </div>

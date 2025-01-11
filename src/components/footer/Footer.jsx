@@ -26,7 +26,6 @@ function Footer({ title }) {
             <Contact />
           </div>
         </div>
-       
       </footer>
       <Social />
         <CopyRight />

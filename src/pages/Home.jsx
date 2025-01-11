@@ -1,7 +1,8 @@
 import React from "react";
 import InfoCart from "../components/infoCarts/InfoCart";
-import HospitalTable from "../components/tables/HospitalTable";
 import ImageSlider from "../components/infoCarts/ImageSlider";
+import DepartmentTable from "../components/tables/DepartmentTable";
+import DepartmentDiscription from "../components/infoCarts/DepartmentDiscription";
 
 function Home() {
   
@@ -10,7 +11,8 @@ function Home() {
       <div className="content">
         <ImageSlider/>
         <InfoCart/>
-        <HospitalTable/>
+        <DepartmentTable/>
+        <DepartmentDiscription/>
       </div>
     </div>
   );

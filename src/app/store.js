@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productReducer from "../features/product/product";
 import cartReducer from "../features/cart/cartSlice";
 import accountSlice from "../features/account/accountSlice";
-import { Component } from "react";
+import doctorReducer from '../features/doctors/doctorSlice';
+import departmentReducer from'../features/departments/deparmentSlice';
 const store = configureStore({
+  
   reducer: {
-    products: productReducer,
     cart: cartReducer,
     components: accountSlice,
+    doctors: doctorReducer,
+    departments: departmentReducer,
   },
 });
 export default store;

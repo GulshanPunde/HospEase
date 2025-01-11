@@ -16,10 +16,10 @@
     "bootstrap-icons": "^1.11.3",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^7.1.1",
+    "react-router-dom": "^6.17.0",
     "string-similarity-js": "^2.1.4",
     "sweetalert": "^2.1.2",
     "uuid": "^11.0.4"
