@@ -1,93 +1,16 @@
-import React, { useState } from 'react';
-import FeedbackbyPatient from '../components/infoCarts/FeedbackbyPatient';
+import React from "react";
+import ValuesList from "../components/infoCarts/ValuesList";
+import PatientTestimonials from "../components/infoCarts/PatientTestimonials";
+import { valuesData } from "../data/aboutUsData";
 
-// Reusable FAQ Item Component
-const FAQItem = ({ id, question, answer, show, toggleShow }) => (
-  <div className="accordion-item">
-    <h2 className="accordion-header" id={`heading${id}`}>
-      <button
-        className={`accordion-button ${show ? "" : "collapsed"}`}
-        type="button"
-        onClick={() => toggleShow(id)}
-        aria-expanded={show ? "true" : "false"}
-        aria-controls={`collapse${id}`}
-      >
-        {question}
-      </button>
-    </h2>
-    <div
-      id={`collapse${id}`}
-      className={`accordion-collapse collapse ${show ? "show" : ""}`}
-      aria-labelledby={`heading${id}`}
-      data-bs-parent="#faqAccordion"
-    >
-      <div className="accordion-body">
-        {answer}
-      </div>
-    </div>
-  </div>
-);
-
-// Reusable Values List Component
-const ValuesList = ({ values }) => (
-  <ul className="list-unstyled">
-    {values.map((value, index) => (
-      <li key={index}><i className="bi bi-check-circle text-success"></i> {value}</li>
-    ))}
-  </ul>
-);
-
-function AboutUsPage() {
-  const [activeFAQ, setActiveFAQ] = useState(null);
-
-  // FAQ Data
-  const faqData = [
-    {
-      id: 1,
-      question: "What are your visiting hours?",
-      answer: "Visiting hours are from 9:00 AM to 8:00 PM daily. Special permissions can be granted for emergencies.",
-    },
-    {
-      id: 2,
-      question: "Do you offer emergency services?",
-      answer: "Yes, our emergency department operates 24/7 to handle any critical health issues.",
-    },
-    {
-      id: 3,
-      question: "How can I book an appointment?",
-      answer: "You can book an appointment online through our website or by calling our customer support team at [Phone Number].",
-    },
-    {
-      id: 4,
-      question: "What insurance plans do you accept?",
-      answer: "We accept a wide variety of insurance plans. Please contact our billing department for specific inquiries related to your insurance provider.",
-    },
-    {
-      id: 5,
-      question: "Do you have facilities for international patients?",
-      answer: "Yes, we have special services for international patients, including language assistance and help with travel arrangements. Please contact us for more information.",
-    },
-  ];
-
-  // Values Data
-  const valuesData = [
-    "Compassion",
-    "Innovation",
-    "Excellence",
-    "Patient-centered care",
-    "Integrity",
-    "Collaboration",
-    "Access to advanced medical technology",
-    "Continuous improvement in healthcare practices",
-    "Holistic and supportive environment",
-    "Respect for individual needs and dignity",
-  ];
-
+const AboutUsPage = () => {
   return (
     <div className="container my-5">
       {/* Header Section */}
       <div className="text-center">
-        <h1 className="display-4 text-primary">About Us</h1>
+        <h1 className="display-4 text-primary">
+          <strong>About Us</strong>
+        </h1>
         <p className="lead text-muted">Dedicated to your health and care</p>
       </div>
 
@@ -95,37 +18,94 @@ function AboutUsPage() {
       <div className="row my-4">
         <div className="col-md-6 mb-4">
           <img
-            src="/images/background/hospitalImg1.jpg" // Ensure correct path
+            src="/images/background/hospitalImg1.jpg"
             alt="Hospital"
             className="img-fluid rounded shadow"
           />
-          <FeedbackbyPatient />
+          <PatientTestimonials />
         </div>
         <div className="col-md-6">
           <h2 className="text-secondary">Our Mission</h2>
           <p>
-            At [Hospital Name], we provide exceptional healthcare services with a focus on compassion, innovation, and excellence. Our state-of-the-art facilities and dedicated staff ensure that you receive the best care possible. We offer a wide range of medical specialties, from emergency care to advanced surgical procedures, all tailored to meet the unique needs of each patient. Our team of highly skilled doctors, nurses, and support staff work tirelessly to provide personalized treatment plans and the highest standards of care. We are committed to creating a healing environment where patients and their families feel supported every step of the way. Whether you're visiting for routine check-ups or more complex treatments, you can trust that you're in safe hands at [Hospital Name].
+            At [Hospital Name], we provide exceptional healthcare services with
+            a focus on compassion, innovation, and excellence. Our
+            state-of-the-art facilities and dedicated staff ensure that you
+            receive the best care possible. Whether you're visiting for routine
+            check-ups or complex treatments, you can trust that you're in safe
+            hands.
           </p>
-
           <h2 className="text-secondary mt-4">Our Values</h2>
           <ValuesList values={valuesData} />
         </div>
       </div>
 
-      
-
-      {/* FAQs Section */}
+      {/* History Section */}
       <div className="my-5">
-        <h2 className="text-center text-secondary">Frequently Asked Questions</h2>
-        <div className="accordion" id="faqAccordion">
-          {faqData.map(faq => (
-            <FAQItem
-              key={faq.id}
-              {...faq}
-              show={activeFAQ === faq.id}
-              toggleShow={setActiveFAQ}
+        <h2 className="text-primary text-center mb-4">Our History</h2>
+        <p>
+          Established in 1985, [Hospital Name] has grown from a small community
+          clinic into one of the region's most trusted healthcare providers.
+          Over the years, we have expanded our services and infrastructure to
+          meet the evolving needs of our patients. Our journey has been marked
+          by numerous milestones, including the addition of specialized
+          departments, cutting-edge technology, and international
+          accreditations.
+        </p>
+      </div>
+
+      {/* Leadership Team Section */}
+      <div className="my-5">
+        <h2 className="text-primary text-center mb-4">Meet Our Leadership Team</h2>
+        <div className="row">
+          <div className="col-md-4 text-center">
+            <img
+              src="https://randomuser.me/api/portraits/men/1.jpg"
+              alt="CEO"
+              className="img-fluid rounded-circle shadow"
+              style={{ width: "150px", height: "150px" }}
             />
-          ))}
+            <h5 className="mt-3">Dr. Jane Smith</h5>
+            <p className="text-muted">Chief Executive Officer</p>
+          </div>
+          <div className="col-md-4 text-center">
+            <img
+              src="https://randomuser.me/api/portraits/men/2.jpg"
+              alt="CMO"
+              className="img-fluid rounded-circle shadow"
+              style={{ width: "150px", height: "150px" }}
+            />
+            <h5 className="mt-3">Dr. John Doe</h5>
+            <p className="text-muted">Chief Medical Officer</p>
+          </div>
+          <div className="col-md-4 text-center">
+            <img
+              src="https://randomuser.me/api/portraits/men/3.jpg"
+              alt="CFO"
+              className="img-fluid rounded-circle shadow"
+              style={{ width: "150px", height: "150px" }}
+            />
+            <h5 className="mt-3">Emily Johnson</h5>
+            <p className="text-muted">Chief Financial Officer</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Services Section */}
+      <div className="my-5">
+        <h2 className="text-primary text-center mb-4">Our Services</h2>
+        <div className="row">
+          <div className="col-md-4">
+            <h4>Emergency Care</h4>
+            <p>Available 24/7 for all types of medical emergencies.</p>
+          </div>
+          <div className="col-md-4">
+            <h4>Advanced Surgery</h4>
+            <p>Equipped with modern operation theaters for complex surgeries.</p>
+          </div>
+          <div className="col-md-4">
+            <h4>Rehabilitation</h4>
+            <p>Comprehensive programs for physical and mental recovery.</p>
+          </div>
         </div>
       </div>
 
@@ -137,6 +117,6 @@ function AboutUsPage() {
       </div>
     </div>
   );
-}
+};
 
 export default AboutUsPage;

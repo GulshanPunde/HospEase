@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import Swal from "sweetalert"; // Import SweetAlert (not SweetAlert2)
+import Swal from "sweetalert";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
+    subject: "",
     message: "",
     sendCopy: false,
   });
@@ -26,6 +28,8 @@ const ContactForm = () => {
     if (!formData.email) errors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email))
       errors.email = "Email is invalid";
+    if (formData.phone && !/^\d{10}$/.test(formData.phone))
+      errors.phone = "Phone number must be 10 digits";
     if (!formData.message) errors.message = "Message is required";
     return errors;
   };
@@ -34,29 +38,36 @@ const ContactForm = () => {
     e.preventDefault();
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
-      // Show SweetAlert success message
       Swal({
         title: "Message Sent",
         text: "Thank you for contacting us. We'll get back to you soon!",
         icon: "success",
         button: "OK",
-        // Custom styles for SweetAlert in dark mode
         className: "sweetalert-dark",
       });
       setFormSubmitted(true);
       setFormData({
         name: "",
         email: "",
+        phone: "",
+        subject: "",
         message: "",
         sendCopy: false,
       });
     } else {
       setFormErrors(errors);
+      Swal({
+        title: "Validation Errors",
+        text: Object.values(errors).join("\n"),
+        icon: "error",
+        button: "OK",
+        className: "sweetalert-dark",
+      });
     }
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-3">
       <style>
         {`
           ::placeholder {
@@ -78,11 +89,9 @@ const ContactForm = () => {
             <input
               type="text"
               className={`form-control ${formErrors.name ? "is-invalid" : ""}`}
-              id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              required
               placeholder="Name"
               style={{
                 backgroundColor: "transparent",
@@ -100,11 +109,9 @@ const ContactForm = () => {
             <input
               type="email"
               className={`form-control ${formErrors.email ? "is-invalid" : ""}`}
-              id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
               placeholder="Email"
               style={{
                 backgroundColor: "transparent",
@@ -119,14 +126,49 @@ const ContactForm = () => {
             )}
           </div>
           <div className="form-group">
+            <input
+              type="text"
+              className={`form-control ${formErrors.phone ? "is-invalid" : ""}`}
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Phone (Optional)"
+              style={{
+                backgroundColor: "transparent",
+                border: "1px solid #ced4da",
+                color: "white",
+                margin: "10px 0",
+                padding: "10px",
+              }}
+            />
+            {formErrors.phone && (
+              <div className="invalid-feedback">{formErrors.phone}</div>
+            )}
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              placeholder="Subject (Optional)"
+              style={{
+                backgroundColor: "transparent",
+                border: "1px solid #ced4da",
+                color: "white",
+                margin: "10px 0",
+                padding: "10px",
+              }}
+            />
+          </div>
+          <div className="form-group">
             <textarea
               className={`form-control ${formErrors.message ? "is-invalid" : ""}`}
-              id="message"
               name="message"
               rows="4"
               value={formData.message}
               onChange={handleChange}
-              required
               placeholder="Message"
               style={{
                 backgroundColor: "transparent",
@@ -136,6 +178,9 @@ const ContactForm = () => {
                 padding: "10px",
               }}
             />
+            <div className="text-light text-end">
+              {formData.message.length}/500 characters
+            </div>
             {formErrors.message && (
               <div className="invalid-feedback">{formErrors.message}</div>
             )}
@@ -144,7 +189,6 @@ const ContactForm = () => {
             <input
               type="checkbox"
               className="form-check-input"
-              id="sendCopy"
               name="sendCopy"
               checked={formData.sendCopy}
               onChange={handleChange}
