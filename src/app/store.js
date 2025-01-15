@@ -5,6 +5,7 @@ import doctorReducer from '../features/doctors/doctorSlice';
 import departmentReducer from '../features/departments/deparmentSlice';
 import testimonialsReducer from '../features/testimonials/testimonialsSlice'
 import faqReducer from '../features/departments/faqSlice';
+import servicesReducer from '../features/departments/servicesSlice'
 const store = configureStore({
   
   reducer: {
@@ -14,6 +15,7 @@ const store = configureStore({
     departments: departmentReducer,
     testimonials: testimonialsReducer,
     faq: faqReducer,
+    services: servicesReducer,
   },
 });
 export default store;

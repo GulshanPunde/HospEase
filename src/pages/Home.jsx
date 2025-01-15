@@ -1,8 +1,9 @@
 import React from "react";
-import InfoCart from "../components/infoCarts/InfoCart";
+import InfoCart from "../components/infoCarts/InfoCards";
 import ImageSlider from "../components/infoCarts/ImageSlider";
 import DepartmentTable from "../components/tables/DepartmentTable";
 import DepartmentDiscription from "../components/infoCarts/DepartmentDiscription";
+
 
 function Home() {
   
