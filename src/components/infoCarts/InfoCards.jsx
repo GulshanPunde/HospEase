@@ -7,13 +7,15 @@ const InfoCards = () => {
 
   return (
     <div className="container my-5">
-      <div className="row">
+      <div className="row flex-nowrap overflow-auto">
         {services.length > 0 ? (
           services.map((service) => (
-            <CardItem key={service.id} product={service} />
+            <div key={service.id} className="col-8 col-sm-6 col-md-4">
+              <CardItem product={service} />
+            </div>
           ))
         ) : (
-          <div className="text-center">No services available</div>
+          <div className="text-center w-100">No services available</div>
         )}
       </div>
     </div>
