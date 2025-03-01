@@ -1,22 +1,23 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import ProfileCard from "../components/userProfile/ProfileCard";
-import OrderHistory from "../components/userProfile/OrderHistory";
-import AccountSettings from "../components/userProfile/AccountSettings";
 import EditProfileModal from "../components/userProfile/EditProfileModal";
 import UserAddresses from "../components/userProfile/UserAddresses";
 import UserProfileHeader from "../components/userProfile/UserProfileHeader";
-
+import AppointmentHistory from "../components/userProfile/AppointmentHistory";
+import { logout } from "../features/auth/authSlice";
 const ProfilePage = () => {
+  
   const [showEditModal, setShowEditModal] = useState(false);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [profile, setProfile] = useState({
     name: "John Doe",
     email: "johndoe@example.com",
     bio: "A short bio about John Doe.",
-    picture: "https://via.placeholder.com/150",
+    picture: "https://randomuser.me/api/portraits/men/7.jpg",
   });
 
   const handleEdit = (updatedProfile) => {
@@ -25,7 +26,8 @@ const ProfilePage = () => {
   };
 
   const handleLogout = () => {
-    navigate("/login");
+    dispatch(logout());
+    navigate("/");
   };
 
   return (
@@ -36,9 +38,9 @@ const ProfilePage = () => {
           <ProfileCard profile={profile} onEdit={() => setShowEditModal(true)} />
         </div>
         <div className="col-md-8">
-          <OrderHistory />
+          <AppointmentHistory/>
           <UserAddresses />
-          <AccountSettings />
+          {/* <AccountSettings /> */}
         </div>
       </div>
       {showEditModal && (
@@ -54,9 +56,4 @@ const ProfilePage = () => {
 
 export default ProfilePage;
 
-// ✅ Layout updates:
-// - Split into modular components
-// - ProfileCard for user info and edit option
-// - Order history, addresses, and settings on the right
-// - Edit modal to update profile details
-// Let me know if you want any more adjustments! 🚀
+
