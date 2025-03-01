@@ -44,14 +44,14 @@ const CardItem = ({ product }) => {
         </p>
 
         {/* Optional Button */}
-        <div className="mt-auto">
+        {/* <div className="mt-auto">
           <button
             className="btn btn-warning btn-sm"
             style={{ fontWeight: "bold", borderRadius: "20px" }}
           >
             Learn More
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

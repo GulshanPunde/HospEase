@@ -1,10 +1,12 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Theme from "./Theme";
 
-function NavBar({ title, isLoggedIn }) {
+function NavBar({ title }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const handleNavigation = (path) => {
     navigate(path);
@@ -12,71 +14,28 @@ function NavBar({ title, isLoggedIn }) {
 
   return (
     <>
-      {isLoggedIn ? (
-        <nav className="navbar navbar-expand-lg navbar-light  border-bottom fixed-top" style={{background:"006BC0"}}>
-          <div className="container-fluid px-md-5 pe-lg-2">
-            {/* Brand Name */}
-            <span
-              onClick={() => handleNavigation("/")}
-              id="name"
-              className="navbar-brand fw-bold pointer"
-            >
-             <strong> <i className="bi bi-heart-pulse me-1 text-primary"></i>{title}</strong> 
-            </span>
+      <nav
+        className="navbar navbar-light border-bottom fixed-top"
+        style={{ background: "#95d7ff" }}
+      >
+        <div className="container-fluid px-md-5 pe-lg-2">
+          {/* Brand Name */}
+          <span
+            onClick={() => handleNavigation("/")}
+            id="name"
+            className="navbar-brand fw-bold pointer"
+          >
+            <strong>
+              <i className="bi bi-heart-pulse me-1 text-primary"></i>
+              {title}
+            </strong>
+          </span>
 
-            {/* Toggler Button for Collapsible Navbar */}
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            {/* Collapsible Content */}
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              {/* Right-Side Options */}
-              <div className="ms-auto d-flex align-items-center">
-                <Theme />
-                <button
-                  onClick={() => handleNavigation("/login")}
-                  className={`btn btn-outline-light me-2 ${
-                    pathname === "/login" ? "active" : ""
-                  }`}
-                >
-                  Login
-                </button>
-                <button
-                  onClick={() => handleNavigation("/signup")}
-                  className={`btn btn-outline-light me-2 ${
-                    pathname === "/signup" ? "active" : ""
-                  }`}
-                >
-                  Sign Up
-                </button>
-              </div>
-            </div>
-          </div>
-        </nav>
-      ) : (
-        <nav className="navbar navbar-light  border-bottom fixed-top " style={{background:"#95d7ff"}}>
-          <div className="container-fluid px-md-5 pe-lg-2">
-            {/* Brand Name */}
-            <span
-              onClick={() => handleNavigation("/")}
-              id="name"
-              className="navbar-brand fw-bold pointer"
-            ><strong >  <i className="bi bi-heart-pulse me-1 text-primary"></i>{title}</strong>
-              
-            </span>
-
-            {/* Right-Side Options */}
-            <div className="ms-auto d-flex align-items-center">
-              <Theme />
+          {/* Right-Side Options */}
+          <div className="ms-auto d-flex align-items-center">
+            <Theme />
+            
+            {!isLoggedIn ? (
               <button
                 onClick={() => handleNavigation("/login")}
                 className={`btn btn-outline-primary me-2 ${
@@ -85,21 +44,28 @@ function NavBar({ title, isLoggedIn }) {
               >
                 Login
               </button>
-              <button
-                  onClick={() => handleNavigation("/signup")}
-                  className={`btn btn-outline-primary me-2 ${
-                  pathname === "/signup" ? "active" : ""
-              }`}
+            ) : (
+              <div
+                className="d-flex align-items-center pointer"
+                onClick={() => handleNavigation("/profile")}
               >
-              Sign Up
-            </button>
-
-            </div>
+                <i className="bi bi-person-circle fs-4 text-primary me-2"></i>
+                <span className="fw-bold">Profile</span>
+              </div>
+            )}
           </div>
-        </nav>
-      )}
+        </div>
+      </nav>
     </>
   );
 }
 
 export default NavBar;
+
+
+// 🚀 Now:
+// - If logged out → Show Login button.
+// - If logged in → Show Profile icon and name.
+// - Click the Profile icon → Navigate to the profile page.
+
+// Let me know if you want me to tweak anything else! ✌🏻

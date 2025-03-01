@@ -1,43 +1,43 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../features/auth/authSlice";
 import "./login.css";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [formError, setFormError] = useState(""); // State to handle form errors
+
+  const { loading, error } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError("Please fill in all fields");
+      setFormError("Please fill in all fields");
       return;
     }
-    console.log("Email:", email);
-    console.log("Password:", password);
-    setError("");
+    setFormError(""); // Clear form error if fields are filled
+
+    dispatch(loginUser({ email, password })).then((result) => {
+      if (result.meta.requestStatus === "fulfilled") {
+        navigate("/");
+        console.log("Login Successful");
+      }
+    });
   };
 
-  const handleRegister = (e) => {
-    navigate("/registration");
-  };
-
-  const handleGoogleLogin = () => {
-    console.log("Login with Google");
-  };
-
-  const handleFacebookLogin = () => {
-    console.log("Login with Facebook");
+  const handleRegister = () => {
+    navigate("/signup");
   };
 
   return (
-    <section
-      className="vh-100 d-flex align-items-center"
-      style={{ backgroundColor: "#9A616D", borderRadius: "1rem" }}
-    >
-      <div className="container " style={{ maxWidth: "800px" }}>
+    <section className="vh-100 d-flex align-items-center">
+      <div className="container" style={{ maxWidth: "800px" }}>
         <div className="row d-flex justify-content-center align-items-center h-80">
           <div className="col col-xl-12">
             <div
@@ -47,7 +47,7 @@ function Login() {
               <div className="row g-0">
                 <div className="col-md-6 col-lg-5 d-none d-md-block">
                   <img
-                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                    src="/images/background/hospitalImg1.jpg"
                     alt="login form"
                     className="img-fluid"
                     style={{ borderRadius: "1rem 0 0 1rem", height: "100%" }}
@@ -56,16 +56,16 @@ function Login() {
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-white">
                     <form onSubmit={handleSubmit}>
-                      <div className="d-flex align-items-center mb-3 ">
+                      <div className="d-flex align-items-center mb-3">
                         <i
-                          className="bi bi-gem me-1 text-primary"
-                          style={{ color: "#ff6219", fontSize: "1.5rem" }}
+                          className="bi bi-heart-pulse me-1 text-danger"
+                          style={{ fontSize: "1.5rem" }}
                         ></i>
                         <span
                           className="h5 fw-bold mb-0"
                           style={{ color: "#ff6210" }}
                         >
-                          STYLESPHERE
+                          HospEase
                         </span>
                       </div>
 
@@ -76,15 +76,22 @@ function Login() {
                         Sign into your account
                       </h5>
 
+                      {/* Error messages */}
+                      {formError && (
+                        <div className="alert alert-warning" role="alert">
+                          {formError}
+                        </div>
+                      )}
                       {error && (
-                        <div className="alert alert-danger">{error}</div>
+                        <div className="alert alert-danger" role="alert">
+                          {error}
+                        </div>
                       )}
 
                       <div className="form-outline mb-4">
                         <input
                           type="email"
-                          id="form-control"
-                          className="form-control form-control-lg bg-transparent "
+                          className="form-control form-control-lg bg-transparent"
                           placeholder="Email address"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -95,8 +102,7 @@ function Login() {
                       <div className="form-outline mb-4">
                         <input
                           type="password"
-                          id="form-control"
-                          className="form-control form-control-lg bg-transparent "
+                          className="form-control form-control-lg bg-transparent"
                           placeholder="Password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
@@ -110,61 +116,25 @@ function Login() {
                           type="submit"
                           id="loginbutton"
                           style={{ fontSize: "0.9rem", fontWeight: "bold" }}
+                          disabled={loading}
                         >
-                          LOGIN
+                          {loading ? "Logging in..." : "LOGIN"}
                         </button>
                       </div>
 
-                      <a className="small" href="#!" style={{ color: "#aaa" }}>
+                      <a className="small" href="#" style={{ color: "#aaa" }}>
                         Forgot password?
                       </a>
                       <p className="mb-2 pb-lg-2">
                         Don't have an account?{" "}
                         <a
-                          href="#!"
+                          href="#"
                           style={{ color: "#ff6219" }}
                           onClick={handleRegister}
                         >
                           Register here
                         </a>
                       </p>
-
-                      <div className="mt-4">
-                        <button
-                          type="button"
-                          className="btn btn-danger w-100 mb-3"
-                          onClick={handleGoogleLogin}
-                          style={{
-                            backgroundColor: "#db4437",
-                            borderColor: "#db4437",
-                            color: "#fff",
-                          }}
-                        >
-                          <i className="bi bi-google me-2"></i> Login with
-                          Google
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-primary w-100"
-                          onClick={handleFacebookLogin}
-                          style={{
-                            backgroundColor: "#3b5998",
-                            borderColor: "#3b5998",
-                            color: "#fff",
-                          }}
-                        >
-                          <i className="bi bi-facebook me-2"></i> Login with
-                          Facebook
-                        </button>
-                      </div>
-                      <div className="mt-1">
-                        <a href="#!" className="small">
-                          Terms of use.
-                        </a>
-                        <a href="#!" className="small">
-                          Privacy policy
-                        </a>
-                      </div>
                     </form>
                   </div>
                 </div>

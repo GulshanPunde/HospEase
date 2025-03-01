@@ -10,6 +10,9 @@ import AboutUsPage from "./pages/AboutUsPage";
 import Footer from "./components/footer/Footer";
 import DepartmentDoctors from "./pages/DepartmentDoctors";
 import AboutDepartment from "./components/infoCarts/AboutDepartment";
+import AppointmentPage from "./pages/AppointmentPage";
+import SettingsPage from "./pages/SettingsPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   const title = "HospEase";
@@ -27,6 +30,9 @@ function App() {
       <Route path="/about-us" element={<AboutUsPage/>} />
       <Route path="/department-doctors" element={<DepartmentDoctors/>}/>
       <Route path="/departments" element={<AboutDepartment/>} />
+      <Route path="/appointments" element={<AppointmentPage/>} />
+      <Route path="/settings" element={<SettingsPage/>}/>
+      <Route path="/profile" element={<ProfilePage/>}/>
     </Routes>
     <Footer title={title} />
     </div>

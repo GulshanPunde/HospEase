@@ -3,8 +3,8 @@ import Social from "./Social";
 import Contact from "./Contact";
 import CopyRight from "./CopyRight";
 import AboutCompany from "./AboutCompany";
-import Links from "./Links";
-import ProductList from "./ProductList";
+import DepartmentsList from "./DepartmentsList";
+import ServiceList from "./ServiceList";
 
 function Footer({ title }) {
   const footerStyles = {
@@ -21,8 +21,8 @@ function Footer({ title }) {
         <div className="container text-center text-md-start mt-5">
           <div className="row mt-3">
             <AboutCompany title={title} />
-            <ProductList />
-            <Links />
+            <DepartmentsList/>
+            <ServiceList/>
             <Contact />
           </div>
         </div>

@@ -6,6 +6,7 @@ import departmentReducer from '../features/departments/deparmentSlice';
 import testimonialsReducer from '../features/testimonials/testimonialsSlice'
 import faqReducer from '../features/departments/faqSlice';
 import servicesReducer from '../features/departments/servicesSlice'
+import authReducer from "../features/auth/authSlice"
 const store = configureStore({
   
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     testimonials: testimonialsReducer,
     faq: faqReducer,
     services: servicesReducer,
+    auth: authReducer,
   },
 });
 export default store;

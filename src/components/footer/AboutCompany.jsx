@@ -12,6 +12,8 @@ function AboutCompany({ title }) {
         efficient, reliable, and streamlined services to enhance patient care
         and hospital operations.
       </p>
+
+      <h4>Bringing Life to Every Moment......</h4>
     </div>
   );
 }

@@ -12,6 +12,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@reduxjs/toolkit": "^2.5.0",
+    "axios": "^1.8.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "lodash": "^4.17.21",
@@ -22,6 +23,7 @@
     "react-router-dom": "^6.17.0",
     "string-similarity-js": "^2.1.4",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.17.2",
     "uuid": "^11.0.4"
   },
   "devDependencies": {
